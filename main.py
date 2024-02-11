@@ -37,6 +37,13 @@ def create_list():
         save_todo_lists_to_file()
     return redirect(url_for('index'))
 
+@app.route('/delete_list/<list_title>')
+def delete_list(list_title):
+    if list_title in todo_lists:
+        del todo_lists[list_title]
+        save_todo_lists_to_file()
+    return redirect(url_for('index'))
+
 @app.route('/todo/<list_title>', methods=['GET', 'POST'])
 def todo(list_title):
     if request.method == 'POST':
@@ -47,6 +54,13 @@ def todo(list_title):
             save_todo_lists_to_file()
 
     return render_template('todo.html', list_title=list_title, tasks=todo_lists.get(list_title, []))
+
+@app.route('/delete_task/<list_title>/<int:task_index>')
+def delete_task(list_title, task_index):
+    if list_title in todo_lists and 0 <= task_index < len(todo_lists[list_title]):
+        del todo_lists[list_title][task_index]
+        save_todo_lists_to_file()
+    return redirect(url_for('todo', list_title=list_title))
 
 if __name__ == '__main__':
     app.run(debug=True)

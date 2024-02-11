@@ -23,6 +23,7 @@
             <li>
                 <input type="checkbox" name="completed" {% if task_info.completed %}checked{% endif %}>
                 {{ task_info.task }}
+                <a href="{{ url_for('delete_task', list_title=list_title, task_index=loop.index0) }}" class="btn btn-danger btn-sm ml-2">Delete</a>
             </li>
         {% endfor %}
     </ul>
