@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #6610f2;
+}
+
+a:hover {
+    color: #6f42c1;
+}

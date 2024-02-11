@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
-Bootstrap(app)
+bootstrap = Bootstrap(app)  # Initialize Flask-Bootstrap
 
 # Sample data structure to store lists and tasks
 todo_lists = {}
