@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)  # Initialize Flask-Bootstrap
+bootstrap = Bootstrap(app)
 
 # Sample data structure to store lists and tasks
 todo_lists = {}
@@ -23,7 +23,9 @@ def todo(list_title):
     if request.method == 'POST':
         task = request.form.get('task')
         if task:
-            todo_lists[list_title].append(task)
+            # Modify task data structure to include a 'completed' flag
+            todo_lists[list_title].append({'task': task, 'completed': False})
+
     return render_template('todo.html', list_title=list_title, tasks=todo_lists.get(list_title, []))
 
 if __name__ == '__main__':

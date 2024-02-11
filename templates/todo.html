@@ -19,8 +19,11 @@
     </form>
 
     <ul>
-        {% for task in tasks %}
-            <li>{{ task }}</li>
+        {% for task_info in tasks %}
+            <li>
+                <input type="checkbox" name="completed" {% if task_info.completed %}checked{% endif %}>
+                {{ task_info.task }}
+            </li>
         {% endfor %}
     </ul>
 </div>

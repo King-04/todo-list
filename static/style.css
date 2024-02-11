@@ -25,3 +25,10 @@ a {
 a:hover {
     color: #6f42c1;
 }
+
+/* Add bullet point before each list item */
+ul li::before {
+    content: '\2022'; /* Unicode character for bullet point */
+    color: #28a745; /* Green color for the bullet point */
+    margin-right: 8px;
+}
